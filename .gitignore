@@ -1,2 +1,4 @@
 rate.json
 .gitignore
+/__pycache__
+/__pycache__/scrap.cpython-313.pyc
