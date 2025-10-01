@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import scrap
+import json
 
 app = Flask(__name__)
 
@@ -12,7 +13,8 @@ def home():
 
 @app.route("/rate")
 def rate():
-    return "ok"
+    with open("rate.json", "r") as f:
+        return jsonify(json.loads(f.read()))
 
 
 app.run(debug=True)

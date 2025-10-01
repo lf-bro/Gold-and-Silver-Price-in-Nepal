@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Gold and Silver rate in Nepal</title>
-</head>
+  </head>
 
-<body class="text-[Poppins] mx-[20vw]">
+  <body class="text-[Poppins] mx-[20vw]">
     <div class="flex flex-col items-center justify-center">
-        <h1 class="font-semibold text-2xl my-[10vh]">Gold and Silver Price in Nepal</h1>
-        <div class="flex items-center justify-around w-[60vw] m-auto">
-            <div>
-                <div class="items-center flex flex-col">
-                    <img src="https://media.istockphoto.com/id/490693469/photo/gold-ingots.jpg?s=612x612&w=0&k=20&c=W0EpTVoZ0dyefcfORcRUDS_StzW1TjDMLX0PQ3zmzS4="
-                        alt="gold bar" class="w-50">
-                    <p id="gold">Gold</p>
-                    <img src="https://republicaimg.nagariknewscdn.com/shared/web/uploads/media/silver_20211010171935.jpg"
-                        alt="silver bar" class="w-50">
-                    <p id="silver">Silver</p>
-                </div>
-            </div>
-            <div>
-                <p class="goldrate">Gold Rate</p>
-                <p class="silverrate">Silver Rate</p>
-            </div>
+      <h1 class="font-semibold text-2xl my-[10vh]">
+        Gold and Silver Price in Nepal
+      </h1>
+      <div class="flex items-center justify-around w-[60vw] m-auto">
+        <div>
+          <div class="items-center flex flex-col">
+            <img
+              src="https://media.istockphoto.com/id/490693469/photo/gold-ingots.jpg?s=612x612&w=0&k=20&c=W0EpTVoZ0dyefcfORcRUDS_StzW1TjDMLX0PQ3zmzS4="
+              alt="gold bar"
+              class="w-50"
+            />
+            <p id="gold">Gold</p>
+            <img
+              src="https://republicaimg.nagariknewscdn.com/shared/web/uploads/media/silver_20211010171935.jpg"
+              alt="silver bar"
+              class="w-50"
+            />
+            <p id="silver">Silver</p>
+          </div>
         </div>
+        <div id="rate"></div>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        axios.get('/data')
-            .then(function (resp) {
-
-            });
+      axios.get("/rate").then((resp) => {
+        console.log(resp.data);
+        const rate = resp.data[0];
+        document.querySelector("#rate").innerHTML = `
+          <p>${rate.goldrate}</p>
+          <p>${rate.silverrate}</p>
+          `;
+      });
     </script>
-</body>
-
+  </body>
 </html>
