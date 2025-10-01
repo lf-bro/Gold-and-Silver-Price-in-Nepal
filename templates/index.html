@@ -18,14 +18,14 @@
   >
     <div class="flex flex-col items-center justify-center">
       <div
-        class="flex flex-col text-yellow-950 items-center justify-center gap-2 mt-[15vh] mb-[10vh]"
+        class="flex flex-col text-yellow-950 items-center justify-center gap-2 mt-[20vh] mb-[10vh]"
       >
         <h1 class="text-5xl font-black uppercase">Gold and Silver</h1>
         <p class="text-2xl">Price in Nepal</p>
       </div>
       <div class="flex items-center justify-around w-[60vw] m-auto">
         <div class="items-center flex flex-col">
-          <div id="rate"></div>
+          <div id="rate" class="flex flex-col gap-20"></div>
         </div>
       </div>
     </div>
@@ -35,14 +35,18 @@
         console.log(resp.data);
         const rate = resp.data[0];
         document.querySelector("#rate").innerHTML = `
-        <div>
-          <p>${rate.goldrate}</p>
-          <div class="p-5 relative bg-red-400">
+        <div class="flex items-center justify-around relative w-100 h-20">
+          <img src="/images/gold.png" alt="gold bar">
+          <p class="text-3xl text-white font-semibold">${rate.goldrate}</p>
+          <div class="p-5 absolute -z-1 top-0 left-0 bg-red-400 w-[100%] h-[100%]">
           </div>
         </div>
-          <div>
-          <p>${rate.silverrate}</p>
+        <div class="flex items-center justify-around relative w-100 h-20">
+          <img src="/images/silver.png" alt="silver bar">
+          <p class="text-3xl text-white font-semibold">${rate.silverrate}</p>
+          <div class="p-5 absolute -z-1 top-0 left-0 bg-red-400 w-[100%] h-[100%]">
           </div>
+        </div>
           `;
       });
     </script>
