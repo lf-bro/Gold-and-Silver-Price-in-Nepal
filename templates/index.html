@@ -13,27 +13,20 @@
     <title>Gold and Silver rate in Nepal</title>
   </head>
 
-  <body class="text-[Poppins] mx-[20vw]">
+  <body
+    class="text-[Poppins] mx-[20vw] bg-orange-50 from-pink-200 to-green-100 h-[100vh]"
+  >
     <div class="flex flex-col items-center justify-center">
-      <h1 class="font-semibold text-2xl my-[10vh]">
-        Gold and Silver Price in Nepal
-      </h1>
+      <div
+        class="flex flex-col text-yellow-950 items-center justify-center gap-2 mt-[15vh] mb-[10vh]"
+      >
+        <h1 class="text-5xl font-black uppercase">Gold and Silver</h1>
+        <p class="text-2xl">Price in Nepal</p>
+      </div>
       <div class="flex items-center justify-around w-[60vw] m-auto">
-        <div>
-          <div class="items-center flex flex-col">
-            <img
-              src="https://media.istockphoto.com/id/490693469/photo/gold-ingots.jpg?s=612x612&w=0&k=20&c=W0EpTVoZ0dyefcfORcRUDS_StzW1TjDMLX0PQ3zmzS4="
-              alt="gold bar"
-              class="w-50"
-            />
-            <img
-              src="https://republicaimg.nagariknewscdn.com/shared/web/uploads/media/silver_20211010171935.jpg"
-              alt="silver bar"
-              class="w-50"
-            />
-          </div>
+        <div class="items-center flex flex-col">
+          <div id="rate"></div>
         </div>
-        <div id="rate"></div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -42,8 +35,14 @@
         console.log(resp.data);
         const rate = resp.data[0];
         document.querySelector("#rate").innerHTML = `
+        <div>
           <p>${rate.goldrate}</p>
+          <div class="p-5 relative bg-red-400">
+          </div>
+        </div>
+          <div>
           <p>${rate.silverrate}</p>
+          </div>
           `;
       });
     </script>
